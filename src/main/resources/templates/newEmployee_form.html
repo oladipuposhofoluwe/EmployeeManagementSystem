@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Employeee Management System</title>
+  <link th:href="@{/CSS/styles.css}" rel="stylesheet">
+  <script type="text/javascript" th:src="@{/JS/script.js}"></script>
+
+  <!-- Latest compiled and minified CSS -->
+  <!--  <link th:href="@{/CSS/boostrap.min.css}" rel="stylesheet">-->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+
+  <style>
+    .rotateimg180 {
+      -webkit-transform:rotate(180deg);
+      -moz-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      transform: rotate(180deg);
+      width: 100%;
+      height:150px;
+      position: absolute;
+      bottom: -5px;
+
+    }
+
+    .back{
+      position: absolute;
+      top: 60px;
+      right: 0px;
+    }
+
+
+    body{
+      background-image: url('/img/newimage.jpeg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-position: right;
+      background-size: cover;
+      z-index: -1;
+    }
+
+  </style>
+
+</head>
+<body class="body bg-img">
+<nav class="navbar navbar-expand-lg navbar-light  bg-info">
+  <a class="navbar-brand text-white" href="#">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link text-white" href="#">Product <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">Service</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="#">ContactUs</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success text-white my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+
+
+<div class="container minor-container">
+  <h3 class="details">Emplyee Details</h3>
+  <a th:href="@{/}" class="btn btn-info back" >Back to Employee List</a>
+  <form action="#" th:action="@{/saveEmployee}" th:object="${employee}" method="POST">
+    <input type="text" th:field="*{firstname}" placeholder="Emplyoee's First Name" required class="form-control mb-4 col-4 form">
+    <input type="text" th:field="*{lastname}" placeholder="Emplyoee's Last Name" required class="form-control mb-4 col-4 form">
+    <input type="text" th:field="*{email}" placeholder="Emplyoee's Email"  required class="form-control mb-4 col-4 form">
+    <input type="text" th:field="*{department}" placeholder="Emplyoee's Department" required class="form-control mb-4 col-4 form">
+    <input type="text" th:field="*{position}" placeholder="Emplyoee's Position" required class="form-control mb-4 col-4 form">
+    <input type="text" th:field="*{gender}" placeholder="Emplyoee's gender" required class="form-control mb-4 col-4 form">
+    <input type="text" th:field="*{age}" placeholder="Emplyoee's Age" required class="form-control mb-4 col-4 form">
+
+    <button type="submit" class="btn btn-info col-2 save">Save Employee</button>
+  </form>
+
+  <hr>
+</div>
+<img src="/img/new.png" class="rotateimg180">
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Employeee Management System</title>
+  <link th:href="@{/CSS/styles.css}" rel="stylesheet">
+  <script type="text/javascript" th:src="@{/JS/script.js}"></script>
+
+  <!-- Latest compiled and minified CSS -->
+
+  <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+
+
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    .rotateimg180 {
+        -webkit-transform:rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+        width: 100%;
+        height:150px;
+        position: absolute;
+        bottom: -5px;
+    }
+
+    .list{
+        margin-top: 30px;
+    }
+
+    html {
+        height: 100%;
+    }
+
+
+    body{
+        height: 100%;
+        background-image: url('/img/newimage.jpeg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: right;
+        background-size: cover;
+        z-index: -1;
+    }
+</style>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light  bg-info">
+    <a class="navbar-brand text-white" href="#">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link text-white" href="#">Product <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#">Service</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="#">ContactUs</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success text-white my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+
+  <div class="container">
+    <h3 class="list">List Of Employee</h3>
+      <a th:href="@{/showEmployeeForm}" class="btn btn-info btn-sm mb-3">Add Employee to List</a>
+    <table border="1" class="table table-striped table-responsive-md table">
+      <thead>
+<!--      <tr><th ><h2>Employee List</h2></th></tr>-->
+      <tr>
+        <th class="btn-info heading">First Name</th>
+        <th class="btn-info heading">Last Name</th>
+        <th class="btn-info heading">email</th>
+        <th class="btn-info heading">Department</th>
+        <th class="btn-info heading">Position</th>
+        <th class="btn-info heading">Gender</th>
+        <th class="btn-info heading">Age</th>
+        <th class="btn-info heading">Option</th>
+        <th class="btn-info heading">Delete</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <tr th:each="employee : ${EmployeeList}">
+        <td th:text="${employee.firstname}"></td>
+        <td th:text="${employee.lastname}"></td>
+        <td th:text="${employee.email}"></td>
+        <td th:text="${employee.department}"></td>
+        <td th:text="${employee.position}"></td>
+        <td th:text="${employee.gender}"></td>
+        <td th:text="${employee.age}"></td>
+        <td><a th:href="@{/showEmployeeUpdateEditForm/{id}( id =${employee.id}) }" class="btn btn-info">Update</a></td>
+          <td><a th:href="@{/deleteEmployee/{id}( id =${employee.id}) }" class="btn btn-danger">Delete</a></td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+<footer ><img src="/img/new.png" class="rotateimg180"> </footer>
+</body>
+</html>
